@@ -1,24 +1,24 @@
-import actionTypes from "../actions/userActionTypes";
+// import actionTypes from "../actions/userActionTypes";
 
-const userReducer = (
-  currentUser = { isAuthenticated: false, user: {} },
-  action
-) => {
-  let newUser;
+// const userReducer = (
+//   currentUser = { isAuthenticated: false, user: {} },
+//   action
+// ) => {
+//   let newUser;
 
-  switch (action.type) {
-    case actionTypes.loginUser:
-      newUser = {
-        ...currentUser,
-        isAuthenticated: true,
-        user: action.currentUser,
-      };
-      break;
+//   switch (action.type) {
+//     case actionTypes.loginUser:
+//       newUser = {
+//         ...currentUser,
+//         isAuthenticated: true,
+//         user: action.currentUser,
+//       };
+//       break;
 
-    default:
-      newUser = currentUser;
-  }
-  return newUser;
-};
+//     default:
+//       newUser = currentUser;
+//   }
+//   return newUser;
+// };
 
-export default userReducer;
+// export default userReducer;

@@ -1,27 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-// import { loginUserThunk } from "../../redux/thunks/userThunks";
+// import useUser from "../../hooks/useUser";
 
 const LoginForm = () => {
-  const initialUser = {
+  const initialData = {
     username: "",
     password: "",
   };
 
-  const [userData, setUserData] = useState(initialUser);
+  const [loginUserData, setUserData] = useState(initialData);
+  const [isDisabled, setIsDisabled] = useState(true);
+  //   const { loginUser } = useUser();
 
   //   const onSubmit = (event) => {
   //     event.preventDefault();
-  //     debugger;
-  //     loginUserThunk(userData);
+  //     loginUser(loginUserData);
   //   };
 
   const changeUserData = (event) => {
     setUserData({
-      ...userData,
+      ...loginUserData,
       [event.target.id]: event.target.value,
     });
   };
+
+  useEffect(() => {
+    setIsDisabled(
+      loginUserData.username === "" || loginUserData.password === ""
+    );
+  }, [loginUserData]);
 
   return (
     <form noValidate autoComplete="off">
@@ -34,6 +41,7 @@ const LoginForm = () => {
         className="form-control"
         required
         onChange={changeUserData}
+        value={loginUserData.username}
       ></input>
       <label htmlFor="password">Password</label>
       <input
@@ -44,8 +52,15 @@ const LoginForm = () => {
         className="form-control"
         required
         onChange={changeUserData}
+        value={loginUserData.password}
       ></input>
-      <button type="submit" className="btn btn-primary">
+      <button
+        type="submit"
+        className={
+          isDisabled ? "loginform_submit_disabled" : "loginform_submit_active"
+        }
+        disabled={isDisabled}
+      >
         Login
       </button>
     </form>
