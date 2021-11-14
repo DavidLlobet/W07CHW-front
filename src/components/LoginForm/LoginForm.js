@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { loginUserThunk } from "../../redux/thunks/userThunks";
+// import { loginUserThunk } from "../../redux/thunks/userThunks";
 
 const LoginForm = () => {
   const initialUser = {
@@ -10,11 +10,11 @@ const LoginForm = () => {
 
   const [userData, setUserData] = useState(initialUser);
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    debugger;
-    loginUserThunk(userData);
-  };
+  //   const onSubmit = (event) => {
+  //     event.preventDefault();
+  //     debugger;
+  //     loginUserThunk(userData);
+  //   };
 
   const changeUserData = (event) => {
     setUserData({
@@ -24,7 +24,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form noValidate autoComplete="off" onSubmit={onSubmit}>
+    <form noValidate autoComplete="off">
       <label htmlFor="username">Username</label>
       <input
         type="text"
