@@ -1,27 +1,17 @@
-import { useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import useUsers from "./hooks/useUsers";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import SocialPage from "./pages/SocialPage";
 import { paths } from "./paths/paths";
 
 function App() {
-  const { loadUsers } = useUsers();
-
-  useEffect(() => {
-    loadUsers();
-  }, [loadUsers]);
-
   return (
     <div className="container">
-      <Router>
-        {/* <Header /> */}
-        <Switch>
-          <Route path={paths.socialPage} exact>
-            <SocialPage />
-          </Route>
-        </Switch>
-      </Router>
+      <BrowserRouter>
+        <Routes>
+          {/* <Header /> */}
+          <Route path={paths.socialPage} element={<SocialPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

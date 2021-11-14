@@ -9,6 +9,5 @@ export const loadUsersThunk = () => async (dispatch) => {
 
   const response = await axios.get(urlApi);
   const users = await response.data;
-  console.log(users);
   dispatch(loadUsersAction(users));
 };

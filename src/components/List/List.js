@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import useUsers from "../../hooks/useUsers";
 import User from "../User/User";
 
 const List = () => {
-  const { users } = useUsers;
+  const { users, loadUsers } = useUsers();
+
+  useEffect(() => {
+    loadUsers();
+  }, [loadUsers]);
 
   return (
     <>
@@ -11,10 +16,10 @@ const List = () => {
         {users.map((user) => (
           <User
             key={user.id}
-            id={user.id}
             name={user.name}
             image={user.image}
             bio={user.bio}
+            age={user.age}
           />
         ))}
       </ul>
