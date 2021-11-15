@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import App from "./App";
+import renderWithProviders from "./utils/test-utils";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("Given an App component", () => {
+  describe("When it renders and it contains some robots in the database", () => {
+    test("Then it should render a robot card", async () => {
+      renderWithProviders(<App />);
+    });
+  });
 });
