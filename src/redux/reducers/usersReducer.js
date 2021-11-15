@@ -8,9 +8,11 @@ const usersReducer = (users = [], action) => {
       newUsers = [...action.users];
       break;
 
+    case actionTypes.createUser:
+      newUsers = [...newUsers, action.user];
+      break;
     default:
       newUsers = users;
-      break;
   }
   return newUsers;
 };
